@@ -1,0 +1,14 @@
+# Ignore Python virtual environment
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# VSCode/JetBrains
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
