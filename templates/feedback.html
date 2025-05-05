@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback | MathGuru AI</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>💬 Your Feedback</h1>
+
+    <form action="/submit-feedback" method="POST" onsubmit="return confirm('✅ Submit your feedback?')">
+        <!-- Name -->
+        <label for="name">Your Name:</label><br>
+        <input type="text" id="name" name="name" placeholder="Anonymous"><br><br>
+
+        <!-- Message -->
+        <label for="message">What did you like?</label><br>
+        <textarea name="message" id="message" rows="5" cols="40" placeholder="Your thoughts..."></textarea><br><br>
+
+        <!-- Rating -->
+        <label for="rating">Rate Us:</label><br>
+        <select name="rating" id="rating">
+            <option value="5">⭐⭐⭐⭐⭐</option>
+            <option value="4">⭐⭐⭐⭐</option>
+            <option value="3">⭐⭐⭐</option>
+            <option value="2">⭐⭐</option>
+            <option value="1">⭐</option>
+        </select><br><br>
+
+        <!-- Buttons -->
+        <button type="submit" class="btn">✅ Submit</button>
+        <button type="button" onclick="window.location.href='/'" class="btn secondary">🔙 Back</button>
+    </form>
+</body>
+</html>

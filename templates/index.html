@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>📸 MathGuru AI</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <!-- 🔝 Navigation Bar -->
+    <nav style="background-color: #0077b6; padding: 15px; display: flex; justify-content: space-between; align-items: center;">
+        <div style="font-size: 22px; font-weight: bold; color: white;">🤖 MathGuru AI Assistant</div>
+        <div>
+            <button onclick="window.location.href='/manual-page'" class="btn">✍️ Manual Ask</button>
+            <button onclick="window.location.href='/chat'" class="btn">💬 Tutor Talk</button>
+            <button onclick="window.location.href='/history'" class="btn">📚 History</button>
+            <button onclick="window.location.href='/hints'" class="btn">💡 Hints</button>
+            <button onclick="window.location.href='/feedback'" class="btn">📝 Feedback</button>
+            <button onclick="window.location.href='/logout'" class="btn">🚪 Logout</button>
+            <button onclick="toggleTheme()" class="btn secondary">🌓 Toggle Theme</button>
+        </div>
+    </nav>
+
+    <!-- 🧠 App Info -->
+    <h1>📸 Ask Anything with Image or Text</h1>
+    <p>Capture from camera or type anything. Our MathGuru AI will respond intelligently.</p>
+
+    <!-- 🎥 Camera Input -->
+    <div class="camera-container">
+        <video id="camera" width="320" height="240" autoplay></video><br>
+        <button id="captureBtn" class="btn">📷 Capture from Camera</button>
+        <canvas id="snapshot" width="320" height="240" style="display:none;"></canvas>
+    </div>
+
+    <hr>
+
+    <!-- ✍️ Manual Input -->
+    <h3>✍️ Or type your question</h3>
+    <input type="text" id="manualInput" placeholder="e.g., Solve Maths">
+    <button id="manualBtn" class="btn">🧠 Ask MathGuru</button>
+
+    <hr>
+
+    <!-- 📋 Output Display -->
+    <h3>📝 Extracted Input:</h3>
+    <p><b>Input:</b> <span id="text">Waiting...</span></p>
+
+    <h3>✅ MathGuru Final Answer:</h3>
+    <p><b>Answer:</b> <span id="result">--</span></p>
+
+    <h3>📘 Full MathGuru Response:</h3>
+    <pre id="steps" style="white-space: pre-wrap; background-color: #f9f9f9; padding: 12px; border-radius: 8px; font-family: 'Courier New'; text-align: left;">Waiting for MathGuru response...</pre>
+
+    <!-- 🔊 Audio Section -->
+    <div style="margin-top: 20px;">
+        <audio id="feedbackAudio" style="display:none;"></audio>
+
+        <!-- English Audio from Server -->
+        <button onclick="playEnglishAudio()" class="btn btn-success">🔊 Play English Answer</button>
+
+        <!-- Hindi Audio from Browser -->
+        <button onclick="playHindiAudio()" class="btn btn-warning">🗣️ Speak Hindi (Browser)</button>
+    </div>
+
+    <!-- 📜 Scripts -->
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/hindi_audio.js"></script>
+
+    <!-- MathJax for LaTeX -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+
+    <!-- Optional: English Audio Function -->
+    <script>
+        function playEnglishAudio() {
+            const audio = document.getElementById('feedbackAudio');
+            if (audio && audio.src) {
+                audio.play().catch(err => console.error("Audio play error:", err));
+            } else {
+                alert("❌ No English feedback audio available.");
+            }
+        }
+    </script>
+
+</body>
+</html>

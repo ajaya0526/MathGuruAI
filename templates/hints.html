@@ -1,0 +1,73 @@
+<!-- templates/hints.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>💡 MathGuru AI Hint</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<div class="container my-5 p-4 bg-white rounded shadow">
+    <h2 class="text-center mb-4">🧠 Ask MathGuru AI</h2>
+
+    <!-- Camera Input -->
+    <div class="text-center mb-4">
+        <video id="camera" width="320" height="240" autoplay></video><br>
+        <button id="captureBtn" class="btn btn-primary mt-2">📸 Capture Image</button>
+        <canvas id="snapshot" width="320" height="240" style="display:none;"></canvas>
+    </div>
+
+    <!-- Manual Input -->
+    <div class="text-center mb-3">
+        <input type="text" id="manualInput" class="form-control" placeholder="e.g., Integrate x^2 dx">
+        <button id="manualBtn" class="btn btn-warning mt-2">✍️ Solve with MathGuru</button>
+    </div>
+
+    <!-- Output -->
+    <div class="mt-4 p-4 border bg-light rounded">
+        <h5>📋 Extracted Input:</h5>
+        <p><b>Expression:</b> <span id="text">Waiting...</span></p>
+
+        <h5 class="mt-3">✅ Final Answer:</h5>
+        <p><b>Answer:</b> <span id="result">--</span></p>
+
+        <h5 class="mt-3">📘 Full Explanation:</h5>
+        <pre id="steps" style="white-space: pre-wrap;">Waiting for explanation...</pre>
+    </div>
+
+    <!-- Audio -->
+    <div class="text-center mt-3">
+        <audio id="feedbackAudio" style="display:none;"></audio>
+        <button onclick="playEnglishAudio()" class="btn btn-success">🔊 Play English</button>
+        <button onclick="playHindiAudio()" class="btn btn-warning">🗣️ Speak Hindi (Browser)</button>
+    </div>
+
+    <!-- Navigation -->
+    <div class="text-center mt-4">
+        <a href="/" class="btn btn-secondary">🔙 Back to Home</a>
+    </div>
+</div>
+
+<script src="/static/js/main.js"></script>
+<script src="/static/js/hindi_audio.js"></script>
+
+<script>
+    function playEnglishAudio() {
+        const audio = document.getElementById('feedbackAudio');
+        if (audio && audio.src) audio.play();
+        else alert("❌ No English audio available.");
+    }
+</script>
+
+<script>
+    window.MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+        svg: { fontCache: 'global' }
+    };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</body>
+</html>

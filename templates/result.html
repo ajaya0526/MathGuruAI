@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result | MathGuru AI</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>✅ Solved Expression</h1>
+
+    <p><b>Expression:</b> <span style="color: #0077b6; font-size: 20px;">{{ expression }}</span></p>
+    <p><b>Result:</b> <span style="color: #28a745; font-size: 24px;">{{ result }}</span></p>
+
+    <br>
+
+    <!-- 🔊 Hindi Speaker Button -->
+    <button onclick="speakHindi('{{ result }}')" class="btn">🗣️ Speak in Hindi</button>
+
+    <br><br>
+
+    <!-- 🔁 Back Button -->
+    <button onclick="window.location.href='/'" class="btn secondary">🔙 Back to Home</button>
+
+    <!-- Hindi Audio Script -->
+    <script src="/static/js/hindi_audio.js"></script>
+</body>
+</html>
